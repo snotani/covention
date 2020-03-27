@@ -1,0 +1,79 @@
+//dbdiagram.io
+//USER//
+Table users as U {
+  id int [pk, increment] // auto-increment
+  username varchar [not null, unique]
+  firstname varchar [not null]
+  lastname varchar [not null]
+  dob date [not null]
+  email varchar [unique, not null]
+  phonenumber int [not null, note: 'include country code']
+}
+
+Table UserRole {
+  id int [ref: > U.id]
+  role varchar [not null, note:'Requestor, Volunteer, Organisation']
+}
+
+Table passwords{
+  id int [ref: > U.id]
+  password varchar [note: 'hashed']
+}
+
+Table records{
+  uid int [ref: > U.id]
+  description varchar [not null, note:'donations, volunteer']
+}
+
+//----------------------------------------------//
+//TASK//
+Table task{
+  id int [pk]
+  requestUser int [ref: > U.id, note:'Requestor']
+  volunteerUser int [ref: > U.id, note:'Volunteer']
+  description varchar [not null]
+  location varchar 
+  category varchar 
+  status varchar
+}
+//----------------------------------------------//
+//FOODBANK//
+Table foodbank{
+  id int [pk, increment]
+  name varchar [not null]
+  location varchar [not null]
+}
+
+Table foodbankEmail{
+  id int [ref:> foodbank.id]
+  email varchar [unique, not null]
+}
+
+Table foodbankPhone{
+  id int [ref:> foodbank.id]
+  phonenumber int [unique, not null, note: 'include country code']
+  description varchar
+}
+
+Table foodbankOperator{
+  fid int [ref: > foodbank.id]
+  uid int [ref: > U.id]
+}
+
+Table foodbankStock{
+  id int [pk]
+  fid int [ref: > foodbank.id]
+  foodname varchar [not null]
+  value varchar 
+}
+
+Table foodbankRequirements{
+  id int [pk]
+  fid int [ref: > foodbank.id]
+  foodname varchar [not null]
+  description varchar
+  quantity int [not null] 
+  donations int [not null]
+}
+
+
