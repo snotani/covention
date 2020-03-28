@@ -23,7 +23,7 @@ const HomeStack = createStackNavigator(
     defaultNavigationOptions: {
       //Header customization of the perticular Screen
       headerStyle: {
-        backgroundColor: '#42f44b',
+        backgroundColor: '#fc0703',
       },
       headerTintColor: '#FFFFFF',
       title: 'Home',
@@ -42,7 +42,7 @@ const SettingsStack = createStackNavigator(
     defaultNavigationOptions: {
       //Header customization of the perticular Screen
       headerStyle: {
-        backgroundColor: '#42f44b',
+        backgroundColor: '#fc0703',
       },
       headerTintColor: '#FFFFFF',
       title: 'Settings',
@@ -50,9 +50,27 @@ const SettingsStack = createStackNavigator(
     },
   }
 );
+const ProfileStack = createStackNavigator(
+  {
+    //Defination of Navigaton from setting screen
+    Login: { screen: LogIn },
+  },
+  {
+    defaultNavigationOptions: {
+      //Header customization of the perticular Screen
+      headerStyle: {
+        backgroundColor: '#fc0703',
+      },
+      headerTintColor: '#FFFFFF',
+      title: 'Profile',
+      //Header title
+    },
+  }
+);
 const App = createBottomTabNavigator(
   {
     Home: { screen: HomeStack },
+    Profile: { screen: ProfileStack},
     Settings: { screen: SettingsStack },
   },
   {
@@ -65,12 +83,14 @@ const App = createBottomTabNavigator(
           iconName = `ios-information-circle${focused ? '' : '-outline'}`;
         } else if (routeName === 'Settings') {
           iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
+        }else if (routeName === 'Profile') {
+          iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
         }
         return <IconComponent name={iconName} size={25} color={tintColor} />;
       },
     }),
     tabBarOptions: {
-      activeTintColor: '#42f44b',
+      activeTintColor: '#fc0703',
       inactiveTintColor: 'gray',
     },
   }
