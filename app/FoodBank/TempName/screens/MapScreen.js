@@ -57,8 +57,6 @@ export default class App extends Component {
         style={ styles.container }
         showsUserLocation={ true }
         region={ this.state.region }
-        onRegionChange={ region => this.setState({region}) }
-        onRegionChangeComplete={ region => this.setState({region}) }
       >
         <MapView.Marker
           coordinate={ this.state.region }
