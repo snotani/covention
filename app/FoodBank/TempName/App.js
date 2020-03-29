@@ -13,6 +13,7 @@ import HomeScreen from './screens/HomeScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import LogIn from './screens/LogIn';
+import MapScreen from './screens/MapScreen';
 const HomeStack = createStackNavigator(
   {
     //Defination of Navigaton from home screen
@@ -67,11 +68,30 @@ const ProfileStack = createStackNavigator(
     },
   }
 );
+
+const MapStack = createStackNavigator(
+  {
+    Map: { screen: MapScreen },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#fc0303',
+      },
+      headerTintColor: '#FFFFFF',
+      title: 'Map',
+      //Header title
+    }
+  }
+);
+
+
 const App = createBottomTabNavigator(
   {
     Home: { screen: HomeStack },
     Profile: { screen: ProfileStack},
     Settings: { screen: SettingsStack },
+    Map: { screen: MapStack},
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -85,7 +105,10 @@ const App = createBottomTabNavigator(
           iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
         }else if (routeName === 'Profile') {
           iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
+        }else if (routeName === 'Map') {
+          iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
         }
+
         return <IconComponent name={iconName} size={25} color={tintColor} />;
       },
     }),
