@@ -14,6 +14,8 @@ import SettingsScreen from './screens/SettingsScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import LogIn from './screens/LogIn';
 import MapScreen from './screens/MapScreen';
+import NewsScreen from './screens/NewsScreen';
+
 const HomeStack = createStackNavigator(
   {
     //Defination of Navigaton from home screen
@@ -28,6 +30,23 @@ const HomeStack = createStackNavigator(
       },
       headerTintColor: '#FFFFFF',
       title: 'Home',
+      //Header title
+    },
+  }
+);
+const NewsStack = createStackNavigator(
+  {
+    //Defination of Navigaton from home screen
+    News: { screen: NewsScreen },
+  },
+  {
+    defaultNavigationOptions: {
+      //Header customization of the perticular Screen
+      headerStyle: {
+        backgroundColor: '#fc0703',
+      },
+      headerTintColor: '#FFFFFF',
+      title: 'News',
       //Header title
     },
   }
@@ -92,6 +111,7 @@ const App = createBottomTabNavigator(
     Profile: { screen: ProfileStack},
     Settings: { screen: SettingsStack },
     Map: { screen: MapStack},
+    News: { screen: NewsStack},
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -106,6 +126,9 @@ const App = createBottomTabNavigator(
         }else if (routeName === 'Profile') {
           iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
         }else if (routeName === 'Map') {
+          iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
+        }
+        else if (routeName === 'News') {
           iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
         }
 
