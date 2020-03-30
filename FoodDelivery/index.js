@@ -1,0 +1,1 @@
+export { default as FoodDelivery } from "./src/screens/FoodDelivery.js";
