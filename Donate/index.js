@@ -1,0 +1,1 @@
+export { default as Donate } from "./src/screens/Donate.js";
