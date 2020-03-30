@@ -1,0 +1,1 @@
+export { default as Registration3 } from "./src/screens/Registration3.js";

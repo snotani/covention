@@ -1,0 +1,1 @@
+export { default as PinReg1 } from "./src/screens/PinReg1.js";
