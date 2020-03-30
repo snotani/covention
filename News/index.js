@@ -1,0 +1,1 @@
+export { default as News } from "./src/screens/News.js";
